@@ -62,15 +62,59 @@
         
         /* === HEADER === */
         .header {
-            text-align: center;
             margin-bottom: 30px;
-            padding: 20px;
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .header h1 {
             font-size: 2rem;
             color: var(--accent-purple);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        
+        /* === NOTIFICATION BADGE === */
+        .notification-btn {
+            position: relative;
+            background: var(--bg-highlight);
+            border: none;
+            color: var(--text-primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .notification-btn:hover {
+            background: var(--accent-purple);
+            color: white;
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            display: none;
         }
         
         /* === LAYOUT === */
@@ -128,8 +172,17 @@
             color: white;
         }
         
+        .btn-secondary:hover {
+            background: #475569;
+        }
+        
         .btn-success {
             background: var(--accent-green);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #ef4444;
             color: white;
         }
         
@@ -141,6 +194,19 @@
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+        
+        /* === REPORT BUTTONS === */
+        .report-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .report-btn {
+            flex: 1;
+            min-width: 120px;
         }
         
         /* === TIMER === */
@@ -297,6 +363,23 @@
             border-left: 4px solid var(--accent-green);
         }
         
+        /* === BIRTHDAY MESSAGE === */
+        .birthday-banner {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #7c2d12;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid #fbbf24;
+            display: none;
+        }
+        
+        .birthday-banner h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
         /* === MODALS === */
         .modal {
             display: none;
@@ -315,6 +398,12 @@
             padding: 20px;
             width: 90%;
             max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-content.large {
+            max-width: 800px;
         }
         
         .modal-header {
@@ -330,6 +419,151 @@
             color: var(--text-secondary);
             font-size: 1.5rem;
             cursor: pointer;
+        }
+        
+        /* === NOTIFICATION PANEL === */
+        .notification-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .notification-item {
+            padding: 12px;
+            border-bottom: 1px solid var(--bg-highlight);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+        }
+        
+        .notification-item:hover {
+            background: var(--bg-highlight);
+        }
+        
+        .notification-item.unread {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 3px solid var(--accent-purple);
+        }
+        
+        .notification-item.important {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+        }
+        
+        .notification-item.special {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--accent-orange);
+        }
+        
+        .notification-icon {
+            color: var(--accent-purple);
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .notification-message {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        
+        .notification-time {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+        
+        .notification-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+        
+        .empty-notifications {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-notifications i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--bg-highlight);
+        }
+        
+        .notification-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        /* === REPORT STYLES === */
+        .report-summary {
+            margin-bottom: 20px;
+        }
+        
+        .report-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .report-stat {
+            background: var(--bg-highlight);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .report-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .report-stat-value.success {
+            color: var(--accent-green);
+        }
+        
+        .report-stat-value.warning {
+            color: var(--accent-orange);
+        }
+        
+        .report-stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .report-sessions {
+            margin-top: 25px;
+        }
+        
+        .special-message {
+            background: linear-gradient(135deg, #8b5cf6, #0ea5e9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .special-message h4 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
         /* === TOAST === */
@@ -428,12 +662,65 @@
         </div>
     </div>
 
+    <!-- Notification Modal -->
+    <div class="modal" id="notificationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-bell"></i> Notifications</h3>
+                <div class="notification-actions">
+                    <button class="btn btn-secondary" id="markAllReadBtn">Mark all read</button>
+                    <button class="btn btn-danger" id="clearNotificationsBtn">Clear all</button>
+                    <button class="close-modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="notificationList" class="notification-list">
+                    <div class="empty-notifications">
+                        <i class="fas fa-bell-slash"></i>
+                        <p>No notifications yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="reportTitle">Report</h3>
+                <div>
+                    <button class="btn btn-secondary" id="exportReportBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button class="close-modal">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="report-info">
+                    <span id="reportDate" class="text-muted"></span>
+                </div>
+                <div id="reportContent" class="report-content">
+                    <!-- Report content goes here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main App -->
     <div class="container" id="app" style="display: none;">
         <!-- Header -->
         <header class="header">
-            <h1><i class="fas fa-moon"></i> Study Tracker </h1>
-            <p class="text-muted">padhle bhai please</p>
+            <div class="header-content">
+                <div>
+                    <h1><i class="fas fa-moon"></i> Study Tracker</h1>
+                    <p class="text-muted">padhle bhai please</p>
+                </div>
+                <button class="notification-btn" id="notificationBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationBadge"></span>
+                </button>
+            </div>
         </header>
 
         <!-- Main Content -->
@@ -569,11 +856,585 @@
                         <div class="text-center text-muted">Loading weekly data...</div>
                     </div>
                 </div>
+
+                <!-- Report Section -->
+                <div class="card">
+                    <h2><i class="fas fa-chart-pie"></i> Reports</h2>
+                    <p class="text-muted mb-10">Generate detailed study reports</p>
+                    
+                    <div class="report-buttons">
+                        <button class="btn btn-secondary report-btn" id="dailyReportBtn">
+                            <i class="fas fa-calendar-day"></i> Daily
+                        </button>
+                        <button class="btn btn-secondary report-btn" id="weeklyReportBtn">
+                            <i class="fas fa-calendar-week"></i> Weekly
+                        </button>
+                        <button class="btn btn-secondary report-btn" id="monthlyReportBtn">
+                            <i class="fas fa-calendar-alt"></i> Monthly
+                        </button>
+                        <button class="btn btn-secondary report-btn" id="yearlyReportBtn">
+                            <i class="fas fa-calendar"></i> Yearly
+                        </button>
+                    </div>
+                    
+                    <!-- Birthday Message (will show automatically on July 17) -->
+                    <div id="birthdayMessage" class="birthday-banner">
+                        <h3><i class="fas fa-birthday-cake"></i> Happy Birthday!</h3>
+                        <p>I wish you a really great upcoming year and thanks for helping me.</p>
+                        <p><strong>Can I buy a gift for you?</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // ========== MONITOR SYSTEM ==========
+        class StudyMonitor {
+            constructor(db) {
+                this.db = db;
+                this.NOTIFICATION_KEY = 'monitor_notifications';
+                this.birthdayChecked = false;
+            }
+
+            // Initialize monitoring system
+            init() {
+                this.checkBirthday();
+                this.setupNotifications();
+                this.loadNotifications();
+            }
+
+            // ========== NOTIFICATION SYSTEM ==========
+            setupNotifications() {
+                // Check for notification permission
+                if ('Notification' in window) {
+                    Notification.requestPermission().then(permission => {
+                        console.log('Notification permission:', permission);
+                    });
+                }
+
+                // Schedule daily midnight check
+                this.scheduleMidnightCheck();
+                this.scheduleWeeklyReport();
+                this.scheduleMonthlyReport();
+            }
+
+            scheduleMidnightCheck() {
+                const now = new Date();
+                const midnight = new Date(now);
+                midnight.setHours(24, 0, 0, 0);
+                
+                const timeUntilMidnight = midnight - now;
+                
+                setTimeout(() => {
+                    this.sendDailyNotification();
+                    // Schedule again for next day
+                    this.scheduleMidnightCheck();
+                }, timeUntilMidnight);
+            }
+
+            scheduleWeeklyReport() {
+                const now = new Date();
+                const nextMonday = new Date(now);
+                const daysUntilMonday = (8 - now.getDay()) % 7 || 7;
+                nextMonday.setDate(now.getDate() + daysUntilMonday);
+                nextMonday.setHours(12, 0, 0, 0); // Monday at 12 PM
+                
+                const timeUntilMonday = nextMonday - now;
+                
+                setTimeout(() => {
+                    this.sendWeeklyReport();
+                    // Schedule again for next week
+                    this.scheduleWeeklyReport();
+                }, timeUntilMonday);
+            }
+
+            scheduleMonthlyReport() {
+                const now = new Date();
+                const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1, 12, 0, 0);
+                
+                const timeUntilNextMonth = nextMonth - now;
+                
+                setTimeout(() => {
+                    this.sendMonthlyReport();
+                    // Schedule again for next month
+                    this.scheduleMonthlyReport();
+                }, timeUntilNextMonth);
+            }
+
+            // ========== NOTIFICATION FUNCTIONS ==========
+            sendDailyNotification() {
+                const data = this.db.load();
+                const todaySessions = this.db.getTodaySessions();
+                const totalMinutes = todaySessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+                const goal = data.settings.dailyGoal;
+                const goalMet = totalMinutes >= goal;
+                
+                const notification = {
+                    id: 'daily_' + Date.now(),
+                    type: 'daily',
+                    title: goalMet ? '🎯 Goal Completed!' : '⏰ Goal Not Met',
+                    message: goalMet 
+                        ? `You completed your study goal today! (${totalMinutes}/${goal} min)`
+                        : `You didn't meet your study goal today. (${totalMinutes}/${goal} min)`,
+                    time: new Date().toISOString(),
+                    read: false,
+                    important: !goalMet
+                };
+
+                this.saveNotification(notification);
+                
+                // Browser notification
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    new Notification(notification.title, {
+                        body: notification.message,
+                        icon: '/favicon.ico',
+                        tag: 'daily-study'
+                    });
+                }
+                
+                // Update notification badge
+                this.updateBadge();
+            }
+
+            sendWeeklyReport() {
+                const sessions = this.db.getWeeklySessions();
+                const totalMinutes = sessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+                const avgDaily = totalMinutes / 7;
+                
+                const notification = {
+                    id: 'weekly_' + Date.now(),
+                    type: 'weekly',
+                    title: '📊 Weekly Report Ready',
+                    message: `Shariq's this week's report is ready! Studied ${totalMinutes} min (${Math.round(avgDaily)} min/day average).`,
+                    time: new Date().toISOString(),
+                    read: false,
+                    important: true
+                };
+
+                this.saveNotification(notification);
+                this.updateBadge();
+            }
+
+            sendMonthlyReport() {
+                const now = new Date();
+                const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+                const monthSessions = this.db.load().sessions.filter(s => 
+                    new Date(s.date) >= monthStart
+                );
+                const totalMinutes = monthSessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+                
+                const notification = {
+                    id: 'monthly_' + Date.now(),
+                    type: 'monthly',
+                    title: '📈 Monthly Report Ready',
+                    message: `Shariq's monthly report is available! Total: ${totalMinutes} min.`,
+                    time: new Date().toISOString(),
+                    read: false,
+                    important: true
+                };
+
+                this.saveNotification(notification);
+                this.updateBadge();
+            }
+
+            // ========== BIRTHDAY FEATURE ==========
+            checkBirthday() {
+                if (this.birthdayChecked) return;
+                
+                const today = new Date();
+                const birthday = new Date(today.getFullYear(), 6, 17); // July 17 (month 6)
+                
+                if (today.getMonth() === birthday.getMonth() && 
+                    today.getDate() === birthday.getDate()) {
+                    
+                    this.showBirthdayNotification();
+                    this.birthdayChecked = true;
+                }
+            }
+
+            showBirthdayNotification() {
+                const notification = {
+                    id: 'birthday_' + Date.now(),
+                    type: 'special',
+                    title: '🎂 Happy Birthday!',
+                    message: 'I wish you a really great upcoming year and thanks for helping me. Can I buy a gift for you?',
+                    time: new Date().toISOString(),
+                    read: false,
+                    important: true,
+                    special: true
+                };
+
+                this.saveNotification(notification);
+                
+                if ('Notification' in window && Notification.permission === 'granted') {
+                    new Notification('🎂 Birthday Alert!', {
+                        body: notification.message,
+                        icon: '/favicon.ico',
+                        requireInteraction: true
+                    });
+                }
+                
+                this.updateBadge();
+            }
+
+            // ========== REPORT SYSTEM ==========
+            generateReport(period = 'daily') {
+                const data = this.db.load();
+                const now = new Date();
+                
+                let sessions = [];
+                let startDate = new Date();
+                let title = '';
+                
+                switch(period) {
+                    case 'daily':
+                        title = 'Daily Report';
+                        sessions = this.db.getTodaySessions();
+                        startDate.setHours(0, 0, 0, 0);
+                        break;
+                    case 'weekly':
+                        title = 'Weekly Report';
+                        sessions = this.db.getWeeklySessions();
+                        startDate.setDate(startDate.getDate() - 7);
+                        break;
+                    case 'monthly':
+                        title = 'Monthly Report';
+                        startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+                        sessions = data.sessions.filter(s => new Date(s.date) >= startDate);
+                        break;
+                    case 'yearly':
+                        title = 'Yearly Report';
+                        startDate = new Date(now.getFullYear(), 0, 1);
+                        sessions = data.sessions.filter(s => new Date(s.date) >= startDate);
+                        break;
+                }
+                
+                // Calculate stats
+                const totalMinutes = sessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+                const sessionCount = sessions.length;
+                const avgSession = sessionCount > 0 ? totalMinutes / sessionCount : 0;
+                
+                // For weekly/monthly: calculate consistency
+                let consistency = 'Good';
+                let trend = 'Steady';
+                
+                if (period === 'weekly' || period === 'monthly') {
+                    // Calculate consistency (days with study vs total days)
+                    const studyDays = [...new Set(sessions.map(s => 
+                        new Date(s.date).toDateString()
+                    ))];
+                    
+                    const totalDays = period === 'weekly' ? 7 : 
+                                    period === 'monthly' ? 30 : 1;
+                    
+                    const consistencyRatio = studyDays.length / totalDays;
+                    
+                    if (consistencyRatio >= 0.8) consistency = 'Excellent';
+                    else if (consistencyRatio >= 0.6) consistency = 'Good';
+                    else if (consistencyRatio >= 0.4) consistency = 'Fair';
+                    else consistency = 'Needs Improvement';
+                    
+                    // Calculate trend (compare with previous period)
+                    const previousPeriod = this.getPreviousPeriodData(period);
+                    trend = totalMinutes > previousPeriod ? 'Improving' : 
+                           totalMinutes < previousPeriod ? 'Declining' : 'Steady';
+                }
+                
+                return {
+                    period,
+                    title,
+                    date: now.toISOString(),
+                    totalMinutes,
+                    sessionCount,
+                    avgSession: Math.round(avgSession),
+                    goal: data.settings.dailyGoal,
+                    goalMet: period === 'daily' ? totalMinutes >= data.settings.dailyGoal : null,
+                    consistency,
+                    trend,
+                    sessions: sessions.slice(0, 50) // Limit sessions in report
+                };
+            }
+
+            getPreviousPeriodData(period) {
+                const data = this.db.load();
+                const now = new Date();
+                let startDate, endDate;
+                
+                switch(period) {
+                    case 'weekly':
+                        startDate = new Date(now);
+                        startDate.setDate(startDate.getDate() - 14);
+                        endDate = new Date(now);
+                        endDate.setDate(endDate.getDate() - 7);
+                        break;
+                    case 'monthly':
+                        startDate = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+                        endDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+                        break;
+                    default:
+                        return 0;
+                }
+                
+                const previousSessions = data.sessions.filter(s => {
+                    const date = new Date(s.date);
+                    return date >= startDate && date < endDate;
+                });
+                
+                return previousSessions.reduce((sum, s) => sum + (s.duration || 0), 0);
+            }
+
+            // ========== NOTIFICATION STORAGE ==========
+            saveNotification(notification) {
+                const notifications = this.getNotifications();
+                notifications.unshift(notification); // Add to beginning
+                localStorage.setItem(this.NOTIFICATION_KEY, JSON.stringify(notifications));
+            }
+
+            getNotifications() {
+                return JSON.parse(localStorage.getItem(this.NOTIFICATION_KEY) || '[]');
+            }
+
+            markAsRead(id) {
+                const notifications = this.getNotifications();
+                const notification = notifications.find(n => n.id === id);
+                if (notification) {
+                    notification.read = true;
+                    localStorage.setItem(this.NOTIFICATION_KEY, JSON.stringify(notifications));
+                    this.updateBadge();
+                }
+            }
+
+            markAllAsRead() {
+                const notifications = this.getNotifications();
+                notifications.forEach(n => n.read = true);
+                localStorage.setItem(this.NOTIFICATION_KEY, JSON.stringify(notifications));
+                this.updateBadge();
+            }
+
+            clearNotifications() {
+                localStorage.removeItem(this.NOTIFICATION_KEY);
+                this.updateBadge();
+            }
+
+            getUnreadCount() {
+                const notifications = this.getNotifications();
+                return notifications.filter(n => !n.read).length;
+            }
+
+            // ========== BADGE SYSTEM ==========
+            updateBadge() {
+                const unreadCount = this.getUnreadCount();
+                const badgeElement = document.getElementById('notificationBadge');
+                
+                if (badgeElement) {
+                    if (unreadCount > 0) {
+                        badgeElement.textContent = unreadCount > 9 ? '9+' : unreadCount;
+                        badgeElement.style.display = 'block';
+                    } else {
+                        badgeElement.style.display = 'none';
+                    }
+                }
+                
+                // Update title badge
+                document.title = unreadCount > 0 
+                    ? `(${unreadCount}) Study Tracker` 
+                    : 'Study Tracker';
+            }
+
+            // ========== LOAD NOTIFICATIONS UI ==========
+            loadNotifications() {
+                const notifications = this.getNotifications();
+                const notificationList = document.getElementById('notificationList');
+                
+                if (notificationList) {
+                    if (notifications.length === 0) {
+                        notificationList.innerHTML = `
+                            <div class="empty-notifications">
+                                <i class="fas fa-bell-slash"></i>
+                                <p>No notifications yet</p>
+                            </div>
+                        `;
+                    } else {
+                        notificationList.innerHTML = notifications.map(notification => `
+                            <div class="notification-item ${notification.read ? '' : 'unread'} ${notification.important ? 'important' : ''} ${notification.special ? 'special' : ''}" 
+                                 data-id="${notification.id}" onclick="studyTracker.monitor.markAsRead('${notification.id}'); studyTracker.monitor.loadNotifications()">
+                                <div class="notification-icon">
+                                    <i class="fas fa-${this.getNotificationIcon(notification.type)}"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-title">${notification.title}</div>
+                                    <div class="notification-message">${notification.message}</div>
+                                    <div class="notification-time">${this.formatTime(notification.time)}</div>
+                                </div>
+                                ${!notification.read ? '<div class="notification-dot"></div>' : ''}
+                            </div>
+                        `).join('');
+                    }
+                }
+                
+                this.updateBadge();
+            }
+
+            getNotificationIcon(type) {
+                const icons = {
+                    'daily': 'calendar-day',
+                    'weekly': 'chart-line',
+                    'monthly': 'chart-bar',
+                    'special': 'birthday-cake',
+                    'default': 'bell'
+                };
+                return icons[type] || icons.default;
+            }
+
+            formatTime(dateString) {
+                const date = new Date(dateString);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+                const diffDays = Math.floor(diffMs / 86400000);
+                
+                if (diffMins < 1) return 'Just now';
+                if (diffMins < 60) return `${diffMins} min ago`;
+                if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+                if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+                return date.toLocaleDateString();
+            }
+
+            // ========== REPORT VIEWER ==========
+            showReport(period = 'daily') {
+                const report = this.generateReport(period);
+                const modal = document.getElementById('reportModal');
+                
+                // Populate report content
+                document.getElementById('reportTitle').textContent = report.title;
+                document.getElementById('reportDate').textContent = 
+                    `Generated: ${new Date(report.date).toLocaleString()}`;
+                
+                const content = document.getElementById('reportContent');
+                content.innerHTML = this.formatReportHTML(report);
+                
+                modal.style.display = 'flex';
+            }
+
+            formatReportHTML(report) {
+                let html = `
+                    <div class="report-summary">
+                        <div class="report-stats-grid">
+                            <div class="report-stat">
+                                <div class="report-stat-value">${report.totalMinutes}</div>
+                                <div class="report-stat-label">Total Minutes</div>
+                            </div>
+                            <div class="report-stat">
+                                <div class="report-stat-value">${report.sessionCount}</div>
+                                <div class="report-stat-label">Sessions</div>
+                            </div>
+                            <div class="report-stat">
+                                <div class="report-stat-value">${report.avgSession}</div>
+                                <div class="report-stat-label">Avg per Session</div>
+                            </div>
+                `;
+                
+                if (report.period === 'daily') {
+                    html += `
+                            <div class="report-stat">
+                                <div class="report-stat-value ${report.goalMet ? 'success' : 'warning'}">
+                                    ${report.goalMet ? '✓' : '✗'}
+                                </div>
+                                <div class="report-stat-label">Goal: ${report.goal} min</div>
+                            </div>
+                    `;
+                } else {
+                    html += `
+                            <div class="report-stat">
+                                <div class="report-stat-value">${report.consistency}</div>
+                                <div class="report-stat-label">Consistency</div>
+                            </div>
+                            <div class="report-stat">
+                                <div class="report-stat-value">${report.trend}</div>
+                                <div class="report-stat-label">Trend</div>
+                            </div>
+                    `;
+                }
+                
+                html += `</div></div>`;
+                
+                // Add sessions table if there are sessions
+                if (report.sessions.length > 0) {
+                    html += `
+                        <div class="report-sessions">
+                            <h4>Sessions</h4>
+                            <table class="sessions-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Subject</th>
+                                        <th>Duration</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${report.sessions.map(session => `
+                                        <tr>
+                                            <td>${new Date(session.date).toLocaleDateString()}</td>
+                                            <td>${session.subject}</td>
+                                            <td>${session.duration} min</td>
+                                            <td>${session.notes || '-'}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+                
+                // Add birthday message if it's a special report
+                if (report.period === 'yearly') {
+                    html += `
+                        <div class="special-message">
+                            <h4>🎂 End of Year Message</h4>
+                            <p>I wish you a really great upcoming year and thanks for helping me.</p>
+                            <p><strong>Can I buy a gift for you?</strong></p>
+                        </div>
+                    `;
+                }
+                
+                return html;
+            }
+
+            exportReport() {
+                const reportTitle = document.getElementById('reportTitle').textContent;
+                const reportContent = document.getElementById('reportContent').innerText;
+                
+                const blob = new Blob([`${reportTitle}\n\n${reportContent}`], {type: 'text/plain'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${reportTitle.toLowerCase().replace(/ /g, '-')}-${new Date().toISOString().split('T')[0]}.txt`;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                this.showToast('Report exported!', 'success');
+            }
+
+            // ========== SHOW TOAST ==========
+            showToast(message, type = 'info') {
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.innerHTML = `
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    ${message}
+                `;
+                
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+        }
+
         // ========== DATABASE ==========
         class StudyDatabase {
             constructor() {
@@ -800,6 +1661,7 @@
                 this.db = new StudyDatabase();
                 this.calendar = new StudyCalendar(this.db);
                 this.weeklyChart = new WeeklyChart(this.db);
+                this.monitor = new StudyMonitor(this.db);
                 this.timerInterval = null;
                 this.startTime = null;
                 this.isRunning = false;
@@ -815,18 +1677,23 @@
                     this.loadData();
                     this.calendar.render();
                     this.weeklyChart.render();
+                    this.monitor.init();
                     
                     // Check if monitor link
                     const urlParams = new URLSearchParams(window.location.search);
                     if (urlParams.has('monitor')) {
                         this.showMonitorView();
                     }
+                    
+                    // Check birthday
+                    this.checkBirthday();
                 }, 800);
             }
             
             showMonitorView() {
                 // Monitor sees same interface but read-only
                 document.getElementById('inviteMonitorBtn').style.display = 'none';
+                document.getElementById('notificationBtn').style.display = 'none';
                 document.getElementById('monitorStatus').innerHTML = `
                     <i class="fas fa-eye"></i>
                     <div>
@@ -844,6 +1711,10 @@
                 document.getElementById('sessionNotes').disabled = true;
                 document.getElementById('editGoalBtn').disabled = true;
                 document.getElementById('inviteMonitorBtn').disabled = true;
+                document.getElementById('dailyReportBtn').disabled = true;
+                document.getElementById('weeklyReportBtn').disabled = true;
+                document.getElementById('monthlyReportBtn').disabled = true;
+                document.getElementById('yearlyReportBtn').disabled = true;
                 
                 this.showToast('You are in monitor view', 'success');
             }
@@ -874,6 +1745,26 @@
                     this.calendar.nextMonth();
                     this.weeklyChart.render();
                 };
+                
+                // Notifications
+                document.getElementById('notificationBtn').onclick = () => this.showNotifications();
+                document.getElementById('markAllReadBtn').onclick = () => {
+                    this.monitor.markAllAsRead();
+                    this.monitor.loadNotifications();
+                };
+                document.getElementById('clearNotificationsBtn').onclick = () => {
+                    if (confirm('Clear all notifications?')) {
+                        this.monitor.clearNotifications();
+                        this.monitor.loadNotifications();
+                    }
+                };
+                
+                // Reports
+                document.getElementById('dailyReportBtn').onclick = () => this.monitor.showReport('daily');
+                document.getElementById('weeklyReportBtn').onclick = () => this.monitor.showReport('weekly');
+                document.getElementById('monthlyReportBtn').onclick = () => this.monitor.showReport('monthly');
+                document.getElementById('yearlyReportBtn').onclick = () => this.monitor.showReport('yearly');
+                document.getElementById('exportReportBtn').onclick = () => this.monitor.exportReport();
                 
                 // Modal close
                 document.querySelectorAll('.close-modal').forEach(btn => {
@@ -1123,6 +2014,18 @@
                 }
             }
             
+            showNotifications() {
+                this.monitor.loadNotifications();
+                document.getElementById('notificationModal').style.display = 'flex';
+            }
+            
+            checkBirthday() {
+                const today = new Date();
+                if (today.getMonth() === 6 && today.getDate() === 17) { // July 17
+                    document.getElementById('birthdayMessage').style.display = 'block';
+                }
+            }
+            
             showToast(message, type = 'info') {
                 const toast = document.createElement('div');
                 toast.className = `toast ${type}`;
@@ -1140,8 +2043,9 @@
         }
 
         // Start app
+        let studyTracker;
         window.addEventListener('DOMContentLoaded', () => {
-            new StudyTracker();
+            studyTracker = new StudyTracker();
         });
     </script>
 </body>
